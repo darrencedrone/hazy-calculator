@@ -21,17 +21,18 @@ const findOperator = (arr) => {
 }
 
 const hazyCalculator = (arr) => {
-  let newArr = findNums(arr).concat(findOperator(arr))
+  let newArr = findNums(arr)
+  let operator = findOperator(arr)
 
-  if (newArr[2] === '+' || newArr[2] === '-' || newArr[2] === '*' || newArr[2] === '/') {
+  if (operator === '+' || operator === '-' || operator === '*' || operator === '/') {
     if (newArr[0] === null && newArr[1] === null) {
-      return eval(0 + '' + newArr[2] + '' + 0)
+      return eval(0 + '' + operator + '' + 0)
     } if (newArr[0] === null && newArr[1] !== null) {
-      return eval(0 + '' + newArr[2] + '' + newArr[1])
+      return eval(0 + '' + operator + '' + newArr[1])
     } if (newArr[0] !== null && newArr[1] === null) {
-      return eval(newArr[0] + '' + newArr[2] + '' + 0)
+      return eval(newArr[0] + '' + operator + '' + 0)
     } else {
-      return eval(newArr[0] + '' + newArr[2] + '' + newArr[1])
+      return eval(newArr[0] + '' + operator + '' + newArr[1])
     }
   } else {
     return NaN
